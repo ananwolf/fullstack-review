@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://localhost/fetcher', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 let repoSchema = mongoose.Schema({
   username: String, //owner.login/unique
   id: {type: Number, unique: true}, //owner.id
-  url: String, //owner.html_url
+  url: String, //html_url
   watchers: Number //watchers
 });
 
@@ -29,3 +29,4 @@ let save = (repo) => {
 };
 
 module.exports.save = save;
+module.exports.Repo = Repo;
